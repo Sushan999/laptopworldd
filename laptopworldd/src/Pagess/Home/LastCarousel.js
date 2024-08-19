@@ -1,11 +1,11 @@
 import React from 'react';
-import { ReactComponent as FreeShippingIcon } from '../Home/freeshipping.svg';
-import { ReactComponent as Genuine } from '../Home/genuine.svg';
-import { ReactComponent as Easyy } from '../Home/easy-return.svg';
-import { ReactComponent as Secure } from '../Home/secure-payment.svg';
+import { ReactComponent as FreeShippingIcon } from '../Home/icons/freeshipping.svg';
+import { ReactComponent as Genuine } from '../Home/icons/genuine.svg';
+import { ReactComponent as Easyy } from '../Home/icons/easy-return.svg';
+import { ReactComponent as Secure } from '../Home/icons/secure-payment.svg';
 import { FaPhone, FaComments, FaMapMarkerAlt } from 'react-icons/fa';
 
-function HomeZ4() {
+function LastCarousel() {
   const features = [
     { icon: FreeShippingIcon, title: "Free Shipping", description: "Free Shipping All Over Nepal" },
     { icon: Genuine, title: "100% Genuine", description: "We Sell 100% Genuine Products" },
@@ -62,4 +62,4 @@ function HomeZ4() {
   );
 }
 
-export default HomeZ4;
+export default LastCarousel;

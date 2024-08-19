@@ -6,6 +6,7 @@ const ProductManager = () => {
   const [editingProduct, setEditingProduct] = useState(null);
   const [formData, setFormData] = useState({
     category: '',
+    categoryId: '',
     name: '',
     productCount: '',
     specs: '',
@@ -15,6 +16,14 @@ const ProductManager = () => {
   });
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+
+  const categoryOptions = [
+    { id: '66b13c6d69c4a6802b105486', name: 'Notebook' },
+    { id: '66b13c7a69c4a6802b10548a', name: 'Ultrabook' },
+    { id: '66b13c8369c4a6802b10548e', name: 'Macbook' },
+    { id: '66b13c9069c4a6802b105492', name: 'Gaming Laptops' },
+    { id: '66b13c9769c4a6802b105496', name: 'Top Selling' },
+  ];
 
   useEffect(() => {
     fetchProducts();
@@ -31,7 +40,20 @@ const ProductManager = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (name === 'category') {
+      const selectedCategory = categoryOptions.find(cat => cat.name === value);
+      setFormData(prev => {
+        const newState = {
+          ...prev,
+          category: selectedCategory ? selectedCategory.id : '',
+          categoryId: selectedCategory ? selectedCategory.id : ''
+        };
+        console.log('Updated form data:', newState);
+        return newState;
+      });
+    } else {
+      setFormData(prev => ({ ...prev, [name]: value }));
+    }
   };
 
   const handleFileChange = (e) => {
@@ -45,15 +67,17 @@ const ProductManager = () => {
     Object.keys(formData).forEach((key) => {
       form.append(key, formData[key]);
     });
-  
+
+    console.log('Form data being sent:', Object.fromEntries(form));
+
     try {
       const config = {
         headers: {
           'Authorization': `Bearer ${token}`,
-          'Content-Type': 'multipart/form-data', // Important for file uploads
+          'Content-Type': 'multipart/form-data',
         },
       };
-  
+
       if (editingProduct) {
         await axios.put(`http://localhost:4000/api/products/${editingProduct._id}`, form, config);
         setSuccessMessage('Product updated successfully.');
@@ -64,6 +88,7 @@ const ProductManager = () => {
       }
       setFormData({
         category: '',
+        categoryId: '',
         name: '',
         productCount: '',
         specs: '',
@@ -73,14 +98,17 @@ const ProductManager = () => {
       });
       fetchProducts();
     } catch (error) {
+      console.error('Error details:', error.response ? error.response.data : error.message);
       setErrorMessage('Error saving product.');
     }
   };
 
   const handleEdit = (product) => {
+    const category = categoryOptions.find(cat => cat.id === product.categoryId);
     setEditingProduct(product);
     setFormData({
-      category: product.category,
+      category: category ? category.id : '',
+      categoryId: product.categoryId,
       name: product.name,
       productCount: product.productCount,
       specs: product.specs.join(', '),
@@ -104,26 +132,31 @@ const ProductManager = () => {
 
   return (
     <div className="container mx-auto p-4 mt-16">
-      <h1 className="text-2xl font-bold mb-4">{editingProduct ? 'Edit Product' : 'Add Product'}</h1>
+      <h1 className="text-2xl font-bold mb-4 text-center">{editingProduct ? 'Edit Product' : 'Add Product'}</h1>
       {errorMessage && (
         <div className="bg-red-100 text-red-800 p-4 mb-4 rounded">
           {errorMessage}
         </div>
       )}
       {successMessage && (
-        <div className="bg-green-100 text-green-800 p-4 mb-4 rounded">
+        <div className="bg-gray-200 text-green-800 p-4 mb-4 rounded">
           {successMessage}
         </div>
       )}
       <form onSubmit={handleSubmit} className="mb-8">
-        <input
-          type="text"
+        <select
           name="category"
-          value={formData.category}
+          value={categoryOptions.find(cat => cat.id === formData.category)?.name || ''}
           onChange={handleInputChange}
-          placeholder="Category"
           className="border p-2 mb-2 w-full"
-        />
+        >
+          <option value="">Select Category</option>
+          {categoryOptions.map(option => (
+            <option key={option.id} value={option.name}>
+              {option.name}
+            </option>
+          ))}
+        </select>
         <input
           type="text"
           name="name"
@@ -172,7 +205,7 @@ const ProductManager = () => {
         />
         <button
           type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded"
+          className="bg-gray-700  hover:bg-gray-900 text-white px-4 py-2 rounded"
         >
           {editingProduct ? 'Update Product' : 'Add Product'}
         </button>
@@ -196,20 +229,20 @@ const ProductManager = () => {
               <td className="border border-gray-300 p-2">
                 <button
                   onClick={() => handleEdit(product)}
-                  className="bg-blue-500 text-white px-2 py-1 rounded mr-2"
+                  className="bg-gray-700 hover:bg-gray-900 w-20 text-white px-2 py-1 rounded mr-2"
                 >
                   Edit
                 </button>
                 <button
                   onClick={() => handleDelete(product._id)}
-                  className="bg-red-500 text-white px-2 py-1 rounded"
+                  className="bg-red-700 hover:bg-red-900 w-20 text-white px-2 py-1 rounded"
                 >
                   Delete
                 </button>
               </td>
             </tr>
           ))}
-        </tbody>
+        </tbody>  
       </table>
     </div>
   );

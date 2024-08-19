@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import HomeZ4 from './HomeZ4';
-import HomeCarousel from './HomeCarousel';
-import HomeCarousel2 from './HomeCarousel2';
-import HomeCarousel3 from './HomeCarousel3';
+import LastCarousel from './LastCarousel';
+import TopSellingCarousel from './TopSellingCarousel';
+import ImagesCarousel1 from './ImagesCarousel1';
+import MacbookCarousel from './MacbookCarousel';
 import HomeCarousel4 from './HomeCarousel4';
-import HomeCarousel5 from './HomeCarousel5';
-import HomeCarousel6 from './HomeCarousel6';
-import HomeCarousel7 from './HomeCarousel7';
-import Homez8 from './Homez8';
+import GamingCarousel from './GamingCarousel';
+import UltrabookCarousel from './UltrabookCarousel';
+import ImagesCarousel2 from './ImagesCarousel2';
+import CategoryCarousel from './CategoryCarousel';
 
 const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -94,18 +94,15 @@ const Home = () => {
         </button>
       </div>
       <div>
-        <HomeCarousel/>
-        <HomeCarousel2/>
-        <HomeCarousel3/>
-        <Homez8/>
+        <TopSellingCarousel/>
+        <ImagesCarousel1/>
+        <MacbookCarousel/>
+        <CategoryCarousel/>
         <HomeCarousel4/>
-        <HomeCarousel7/>
-        <HomeCarousel5/>
-        <HomeCarousel6/>
-        
-        
-
-        <HomeZ4/>
+        <ImagesCarousel2/>
+        <GamingCarousel/>
+        <UltrabookCarousel/>
+        <LastCarousel/>
       </div>
     </div>
   );

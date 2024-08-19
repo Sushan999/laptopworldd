@@ -241,7 +241,7 @@ router.post('/',authMiddleware, authorizeRole('admin'), productImage.single('ima
 
 
 // Route to update a product
-router.put('/:id', productImage.single('image'), updateProduct);
+router.put('/:id',authMiddleware, authorizeRole('admin'), productImage.single('image'), updateProduct);
 
 // Route to get all products
 router.get('/', getProducts);

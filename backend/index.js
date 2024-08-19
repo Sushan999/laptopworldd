@@ -6,7 +6,12 @@ const cors = require('cors');
 const ProfileRoutes = require('./src/Routes/ProfileRoutes');
 const categoryRoutes=require('./src/Routes/categoryRoutes');
 const productRoutes = require('./src/Routes/productRoutes');
+const checkoutRoutes = require('./src/Routes/checkoutRoutes');
+const orderRoutes = require('./src/Routes/orderRoutes');
+const cartRoutes = require('./src/Routes/cartRoutes');
 const path = require('path');
+const auth = require('./src/Middleware/authMiddleware');
+const authMiddleware = require('./src/Middleware/authMiddleware');
 dotenv.config();
 
 const app = express();
@@ -25,8 +30,12 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/api/auth', require('./src/Routes/authRoute'));
 
 app.use('/api/profile', ProfileRoutes);
-app.use('/api/category',categoryRoutes)
+app.use('/api/category',categoryRoutes) 
 app.use('/api/products', productRoutes);
+app.use('/api', checkoutRoutes);
+app.use('/api/orders', orderRoutes);
+app.use('/api/cart', cartRoutes);
+
 
 
 const PORT = process.env.PORT || 4000;

@@ -14,7 +14,7 @@ const carouselItems = [
     // Add more image URLs here
 ];
 
-const HomeCarousel7 = () => {
+const ImagesCarousel2 = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -54,4 +54,4 @@ const HomeCarousel7 = () => {
   );
 };
 
-export default HomeCarousel7;
+export default ImagesCarousel2;

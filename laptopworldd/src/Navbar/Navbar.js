@@ -50,6 +50,7 @@ function Navbar() {
           <div className="flex items-center space-x-3">
             <Link to="/account" className={`text-white hover:text-indigo-500 transition duration-300 ease-in-out ${scrollDirection === "down" ? 'lg:text-base text-sm' : 'text-sm'}`}>My Account</Link>
             <Link to="/cart" className={`text-white hover:text-indigo-500 transition duration-300 ease-in-out ${scrollDirection === "down" ? 'lg:text-base text-sm' : 'text-sm'}`}>My Cart</Link>
+            <Link to="/adminmain" className={`text-white hover:text-indigo-500 transition duration-300 ease-in-out ${scrollDirection === "down" ? 'lg:text-base text-sm' : 'text-sm'}`}>Admin</Link>
           </div>
 
           {/* Mobile menu button */}

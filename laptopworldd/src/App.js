@@ -19,6 +19,13 @@ import Ultrabook from './Pagess/Categories/Ultrabook';
 import Macbook from './Pagess/Categories/Macbook';
 import TopSelling from './Pagess/Categories/TopSelling';
 import ProductManager from './Products/ProductManager';
+import ControlProducts from './Pagess/Admin/controlProducts';
+import CheckoutComponent from './Pagess/Checkout/CheckoutComponent';
+import AdminMainPagee from './Pagess/Admin/AdminMainPagee';
+import AdminOrders from './Pagess/Admin/AdminOrders';
+import UserOrders from './Orders/UserOrders';
+
+
 
 
 
@@ -39,7 +46,13 @@ function App() {
         <Route path="/topselling" element={<TopSelling />} />
         <Route path="/account" element={<Account />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/product" element={<ProductManager />} />
+        <Route path="/admin" element={<ControlProducts />} />
+        <Route path="/productadmin" element={<ProductManager />} />
+        <Route path="/checkout" element={<CheckoutComponent />} />
+        <Route path="/checkout/:productId" element={<CheckoutComponent />} />
+        <Route path="/adminmain" element={<AdminMainPagee />} />
+        <Route path="/admin/orders" element={<AdminOrders />} />
+        <Route path="/userorders" element={<UserOrders />} />
       </Routes>
     </Router>
   );

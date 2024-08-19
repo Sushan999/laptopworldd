@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ViewDetails from '../Vieww/viewDetails'; // Adjust the import path as needed
 
-const HomeCarousel4 = () => {
+const UltrabookCarousel = () => {
   const [products, setProducts] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [selectedProduct, setSelectedProduct] = useState(null); // State for selected product
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const productsPerPage = 4;
 
   useEffect(() => {
@@ -13,7 +13,7 @@ const HomeCarousel4 = () => {
       try {
         const response = await axios.get('http://localhost:4000/api/products', {
           params: {
-            category: '66b13c6d69c4a6802b105486' // Updated category ID
+            category: '66b13c7a69c4a6802b10548a' // Updated category ID
           }
         });
         setProducts(response.data);
@@ -49,7 +49,7 @@ const HomeCarousel4 = () => {
 
   return (
     <div className="container mx-auto px-2 sm:px-4 lg:px-8 relative">
-      <h1 className="text-3xl font-bold text-center my-8">NoteBooks For You</h1>
+      <h1 className="text-3xl font-bold text-center my-8">UltraBooks Recommended For You</h1>
       {selectedProduct ? (
         <ViewDetails product={selectedProduct} onBack={handleBack} />
       ) : (
@@ -101,4 +101,4 @@ const HomeCarousel4 = () => {
   );
 };
 
-export default HomeCarousel4;
+export default UltrabookCarousel;
