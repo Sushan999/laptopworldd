@@ -87,6 +87,7 @@ const AdminOrders = () => {
                       <option value="">Select Status</option>
                       <option value="pending">Pending</option>
                       <option value="shipped">Shipped</option>
+                      <option value="shipping">Shipping</option> {/* Added option */}
                     </select>
                     <button
                       onClick={() => handleStatusChange(order._id)}

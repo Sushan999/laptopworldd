@@ -24,6 +24,7 @@ import CheckoutComponent from './Pagess/Checkout/CheckoutComponent';
 import AdminMainPagee from './Pagess/Admin/AdminMainPagee';
 import AdminOrders from './Pagess/Admin/AdminOrders';
 import UserOrders from './Orders/UserOrders';
+import ViewDetails from './Pagess/Vieww/viewDetails';
 
 
 
@@ -53,6 +54,7 @@ function App() {
         <Route path="/adminmain" element={<AdminMainPagee />} />
         <Route path="/admin/orders" element={<AdminOrders />} />
         <Route path="/userorders" element={<UserOrders />} />
+        <Route path="/product/:productId" element={<ViewDetails />} />
       </Routes>
     </Router>
   );

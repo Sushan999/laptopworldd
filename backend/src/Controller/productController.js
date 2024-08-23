@@ -470,6 +470,35 @@ const deleteProduct = async (req, res) => {
   }
 };
 
+exports.cancelOrder = async (req, res) => {
+  try {
+    const { orderId } = req.params;
+
+    // Find the order by ID
+    const order = await Order.findById(orderId);
+
+    if (!order) {
+      return res.status(404).json({ message: 'Order not found' });
+    }
+
+    // Check if the order belongs to the authenticated user
+    if (order.user.toString() !== req.user._id.toString()) {
+      return res.status(403).json({ message: 'Unauthorized' });
+    }
+
+    // Update the order status to 'canceled'
+    order.status = 'canceled';
+    await order.save();
+
+    res.status(200).json({ message: 'Order canceled successfully' });
+  } catch (error) {
+    console.error('Error canceling the order:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+
+
 module.exports = {
   createProduct,
   updateProduct,
@@ -478,4 +507,5 @@ module.exports = {
   getProduct,
   deleteProduct,
   getProductsByCategory,
+  
 };
