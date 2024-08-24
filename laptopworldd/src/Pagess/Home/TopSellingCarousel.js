@@ -59,7 +59,7 @@ const TopSellingCarousel = () => {
             />
             <div className="p-2 sm:p-4 flex flex-col flex-grow">
               <h2 className="text-sm sm:text-lg font-bold mb-1 sm:mb-2">{product.name}</h2>
-              <p className="text-xs sm:text-sm text-gray-600 mb-1 sm:mb-2">{product.productCount} PRODUCTS</p>
+              <p className="text-xs sm:text-sm text-gray-600 mb-1 sm:mb-2">{product.productCount}</p>
               <p className="text-xs text-gray-500 mb-1 sm:mb-2 hidden sm:block">{product.specs.join(' • ')}</p>
               <div className="mt-auto">
                 <p className="text-xs sm:text-sm line-through text-gray-400">Starting at Rs.{product.originalPrice}</p>

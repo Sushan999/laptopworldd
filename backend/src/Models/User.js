@@ -19,17 +19,20 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  address: {
+    type: String, // or use another type if address has a complex structure
+    required: true,
+  },
   password: {
     type: String,
     required: true,
-  }, 
-   role:{
-    type:String,
-    enum:["admin","user"],
-    default:"user",
-    required:true
-}
-
+  },
+  role: {
+    type: String,
+    enum: ["admin", "user"],
+    default: "user",
+    required: true,
+  },
 });
 
 UserSchema.pre('save', async function (next) {

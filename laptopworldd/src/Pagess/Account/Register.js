@@ -20,13 +20,13 @@ const Modal = ({ isOpen, onClose, children }) => {
   );
 };
 
-
 const Register = () => {
   const [formValues, setFormValues] = useState({
     firstName: '',
     lastName: '',
     email: '',
     phoneNumber: '',
+    address: '',
     password: '',
     confirmPassword: '',
   });
@@ -49,6 +49,7 @@ const Register = () => {
       tempErrors.email = "Email is invalid";
     }
     if (!formValues.phoneNumber) tempErrors.phoneNumber = "Phone number is required";
+    if (!formValues.address) tempErrors.address = "Address is required";
     if (!formValues.password) tempErrors.password = "Password is required";
     if (formValues.password !== formValues.confirmPassword) {
       tempErrors.confirmPassword = "Passwords do not match";
@@ -128,6 +129,16 @@ const Register = () => {
           className="w-full p-2 border rounded"
         />
         {errors.phoneNumber && <p className="text-red-500 text-sm">{errors.phoneNumber}</p>}
+
+        <input
+          type="text"
+          name="address"
+          value={formValues.address}
+          onChange={handleChange}
+          placeholder="Address"
+          className="w-full p-2 border rounded"
+        />
+        {errors.address && <p className="text-red-500 text-sm">{errors.address}</p>}
 
         <input
           type="password"

@@ -29,7 +29,7 @@ router.post('/create', auth, createOrder);
 router.get('/', auth, authorizeRole('admin'), getOrders); // Admin only
 router.put('/:orderId', auth, authorizeRole('admin'), updateOrder); // Update order for admin
 router.get('/me', auth, getUserOrders); // Fetch orders for the logged-in user
-router.delete('/:orderId', auth, cancelOrder);
+router.delete('/:orderId', auth,  cancelOrder);
 
 module.exports = router;
 

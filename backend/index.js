@@ -12,6 +12,7 @@ const cartRoutes = require('./src/Routes/cartRoutes');
 const path = require('path');
 const auth = require('./src/Middleware/authMiddleware');
 const authMiddleware = require('./src/Middleware/authMiddleware');
+const contactUsRoutes = require('./src/Routes/contactUsRoutes');
 dotenv.config();
 
 const app = express();
@@ -35,6 +36,7 @@ app.use('/api/products', productRoutes);
 app.use('/api', checkoutRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/cart', cartRoutes);
+app.use('/api', contactUsRoutes);
 
 
 

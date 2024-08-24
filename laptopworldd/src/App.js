@@ -18,17 +18,15 @@ import Notebook from './Pagess/Categories/Notebook';
 import Ultrabook from './Pagess/Categories/Ultrabook';
 import Macbook from './Pagess/Categories/Macbook';
 import TopSelling from './Pagess/Categories/TopSelling';
-import ProductManager from './Products/ProductManager';
-import ControlProducts from './Pagess/Admin/controlProducts';
+import ProductManager from './Pagess/Admin/ProductManager';
+
 import CheckoutComponent from './Pagess/Checkout/CheckoutComponent';
 import AdminMainPagee from './Pagess/Admin/AdminMainPagee';
 import AdminOrders from './Pagess/Admin/AdminOrders';
 import UserOrders from './Orders/UserOrders';
 import ViewDetails from './Pagess/Vieww/viewDetails';
-
-
-
-
+import ContactUs from './Pagess/ContactUs/ContactUs';
+import AdminContactMessages from './Pagess/Admin/AdminContactMessages';
 
 
 
@@ -47,14 +45,16 @@ function App() {
         <Route path="/topselling" element={<TopSelling />} />
         <Route path="/account" element={<Account />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/admin" element={<ControlProducts />} />
-        <Route path="/productadmin" element={<ProductManager />} />
         <Route path="/checkout" element={<CheckoutComponent />} />
         <Route path="/checkout/:productId" element={<CheckoutComponent />} />
-        <Route path="/adminmain" element={<AdminMainPagee />} />
-        <Route path="/admin/orders" element={<AdminOrders />} />
         <Route path="/userorders" element={<UserOrders />} />
         <Route path="/product/:productId" element={<ViewDetails />} />
+        <Route path="/contactus" element={<ContactUs />} />
+        <Route path="/productadmin" element={<ProductManager />} />
+        <Route path="/adminmain" element={<AdminMainPagee />} />
+        <Route path="/admin/orders" element={<AdminOrders />} />
+        
+        <Route path="/admincontact" element={<AdminContactMessages />} />
       </Routes>
     </Router>
   );

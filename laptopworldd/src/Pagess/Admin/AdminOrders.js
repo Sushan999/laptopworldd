@@ -65,6 +65,9 @@ const AdminOrders = () => {
             <th className="border border-gray-300 p-2">Order ID</th>
             <th className="border border-gray-300 p-2">Product</th>
             <th className="border border-gray-300 p-2">User</th>
+            <th className="border border-gray-300 p-2">Email</th>
+            <th className="border border-gray-300 p-2">Contact no.</th>
+            <th className="border border-gray-300 p-2">Address</th>
             <th className="border border-gray-300 p-2">Status</th>
             <th className="border border-gray-300 p-2">Actions</th>
           </tr>
@@ -75,6 +78,9 @@ const AdminOrders = () => {
               <td className="border border-gray-300 p-2">{order._id}</td>
               <td className="border border-gray-300 p-2">{order.product.name}</td>
               <td className="border border-gray-300 p-2">{order.user.firstName} {order.user.lastName}</td>
+              <td className="border border-gray-300 p-2">{order.user.email} </td>
+              <td className="border border-gray-300 p-2">{order.user.phoneNumber} </td>
+              <td className="border border-gray-300 p-2">{order.user.address} </td>
               <td className="border border-gray-300 p-2">{order.status}</td>
               <td className="border border-gray-300 p-2">
                 {selectedOrder === order._id ? (
@@ -86,8 +92,8 @@ const AdminOrders = () => {
                     >
                       <option value="">Select Status</option>
                       <option value="pending">Pending</option>
+                      <option value="shipping">Shipping</option>
                       <option value="shipped">Shipped</option>
-                      <option value="shipping">Shipping</option> {/* Added option */}
                     </select>
                     <button
                       onClick={() => handleStatusChange(order._id)}

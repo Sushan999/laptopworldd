@@ -13,7 +13,10 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {      fontFamily: {
+      abel: ['Abel', 'sans-serif'],
+      inter: ['Inter', 'sans-serif'],
+    },},
   },
   plugins: [],
 }

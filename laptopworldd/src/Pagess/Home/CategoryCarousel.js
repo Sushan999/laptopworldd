@@ -12,7 +12,7 @@ const categories = [
 const CategoryCarousel = () => {
   return (
     <div className="container mx-auto px-4 mt-16">
-      <h1 className="text-3xl font-bold text-center mb-4">Categories For You</h1>
+      <h1 className="text-3xl font-bold text-center mb-4 font-sans">Categories For You</h1>
       <div className="flex flex-wrap justify-center space-x-0 space-y-8 mt-12 md:space-x-12 md:space-y-0">
         {categories.map((category, index) => (
           <Link to={category.path} key={index} className="flex flex-col items-center w-1/2 md:w-auto">

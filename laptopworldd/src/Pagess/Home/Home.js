@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for routing
 import LastCarousel from './LastCarousel';
 import TopSellingCarousel from './TopSellingCarousel';
 import ImagesCarousel1 from './ImagesCarousel1';
@@ -11,6 +12,8 @@ import CategoryCarousel from './CategoryCarousel';
 
 const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const navigate = useNavigate(); // Initialize useNavigate
+
   const slides = [
     {
       image: 'https://assets-prd.ignimgs.com/2022/04/25/acernitrolaptop-1650914214505.jpg',
@@ -41,7 +44,7 @@ const Home = () => {
       setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, );
+  }, [slides.length]);
 
   const nextSlide = () => {
     setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
@@ -49,6 +52,19 @@ const Home = () => {
 
   const prevSlide = () => {
     setCurrentSlide((prevSlide) => (prevSlide - 1 + slides.length) % slides.length);
+  };
+
+  const handleBuyNow = () => {
+    if (currentSlide === 0) {
+      navigate('/gaming-laptops');
+    } else if (currentSlide === 1) {
+      navigate('/macbook');
+    } else if (currentSlide === 2) {
+      navigate('/macbook');
+    } else {
+     
+      navigate('/'); //default route
+    }
   };
 
   return (
@@ -69,11 +85,12 @@ const Home = () => {
                 <p className="text-base md:text-lg lg:text-xl mb-6 max-w-2xl">{slide.description}</p>
                 <p className="text-base md:text-lg lg:text-xl mb-8">{slide.code}</p>
                 <div className="space-x-4">
-                  <button className="bg-white text-black px-6 py-2 rounded-full hover:bg-gray-200 transition-colors">
-                    Join Us
-                  </button>
-                  <button className="bg-transparent border border-white text-white px-6 py-2 rounded-full hover:bg-white hover:text-black transition-colors">
-                    Learn More
+
+                  <button
+                    onClick={handleBuyNow} // Attach the click handler
+                    className="bg-transparent border border-white text-white px-6 py-2 rounded-full hover:bg-white hover:text-black transition-colors"
+                  >
+                    Buy Now
                   </button>
                 </div>
               </div>
@@ -82,13 +99,13 @@ const Home = () => {
         ))}
         <button
           onClick={prevSlide}
-          className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full z-20" // Increased z-index
+          className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full z-20"
         >
           &lt;
         </button>
         <button
           onClick={nextSlide}
-          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full z-20" // Increased z-index
+          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full z-20"
         >
           &gt;
         </button>

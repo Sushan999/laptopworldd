@@ -7,7 +7,7 @@ const userProfile = require('../Models/userProfile');
 dotenv.config();
 
 const register = async (req, res) => {
-  const { firstName, lastName, email, phoneNumber, password, role } = req.body;
+  const { firstName, lastName, email, phoneNumber, address, password, role } = req.body;
 
   try {
     let user = await User.findOne({ email });
@@ -20,6 +20,7 @@ const register = async (req, res) => {
       lastName,
       email,
       phoneNumber,
+      address,
       password,
       role
     });
@@ -64,7 +65,7 @@ const login = async (req, res) => {
       { expiresIn: '1h' },
       (err, token) => {
         if (err) throw err;
-        res.json({ msg:"yes",token });
+        res.json({ msg: "yes", token });
       }
     );
   } catch (err) {

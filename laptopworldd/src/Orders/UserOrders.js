@@ -33,7 +33,11 @@ const UserOrders = () => {
           'Authorization': `Bearer ${token}`
         }
       });
-      setOrders(prevOrders => prevOrders.filter(order => order._id !== orderId));
+      setOrders(prevOrders =>
+        prevOrders.map(order =>
+          order._id === orderId ? { ...order, status: 'cancelled' } : order
+        )
+      );
     } catch (error) {
       setErrorMessage('Error cancelling the order.');
     }
@@ -68,19 +72,21 @@ const UserOrders = () => {
                 <p className="text-gray-600">Order ID: {order._id}</p>
                 <p className="text-gray-900 font-bold">Status: {order.status}</p>
               </div>
-              <div className="space-y-2">
+              <div className="flex flex-col space-y-2 w-1/4">
                 <button
                   onClick={() => handleViewProduct(order.product._id)} // Navigate to product details
-                  className="w-full bg-gray-700 text-white py-2 rounded hover:bg-gray-900"
+                  className="bg-gray-700 text-white py-2 rounded hover:bg-gray-900"
                 >
                   View Product
                 </button>
-                <button
-                  onClick={() => handleCancelOrder(order._id)} // Cancel the order
-                  className="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700"
-                >
-                  Cancel
-                </button>
+                {order.status === 'pending' && (
+                  <button
+                    onClick={() => handleCancelOrder(order._id)} // Cancel the order
+                    className="bg-red-600 text-white py-2 rounded hover:bg-red-700"
+                  >
+                    Cancel
+                  </button>
+                )}
               </div>
             </div>
           ))}

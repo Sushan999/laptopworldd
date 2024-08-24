@@ -168,6 +168,7 @@ const SignIn = () => {
             <p className="text-lg"><strong>Last Name:</strong> {user.lastName}</p>
             <p className="text-lg"><strong>Email:</strong> {user.email}</p>
             <p className="text-lg"><strong>Phone Number:</strong> {user.phoneNumber}</p>
+            <p className="text-lg"><strong>Address:</strong> {user.address}</p>
             <p className="text-lg"><strong>Role:</strong> {user.role}</p> {/* Display role */}
           </div>
           <div className="mt-6 flex justify-center">

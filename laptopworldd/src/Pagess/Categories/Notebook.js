@@ -43,7 +43,7 @@ const Notebook = () => {
             />
             <div className="p-4 flex flex-col flex-grow">
               <h2 className="text-lg font-bold mb-2">{product.name}</h2>
-              <p className="text-sm text-gray-600 mb-2">{product.productCount} PRODUCTS</p>
+              <p className="text-sm text-gray-600 mb-2">{product.productCount}</p>
               <p className="text-xs text-gray-500 mb-2">{product.specs.join(' • ')}</p>
               <div className="mt-auto">
                 <p className="text-sm line-through text-gray-400">Starting at Rs.{product.originalPrice}</p>
